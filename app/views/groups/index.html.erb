@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Groups</h1>
+
+<div id="groups">
+  <% @groups.each do |group| %>
+  <div>
+    <h5>Nombre</h5>
+    <p> <%= group.name %> </p>
+  </div>
+  <div>
+    <h5>Cantidad de Conciertos</h5>
+    <p> <%= group.concerts.count %> </p>
+  </div>
+  <div>
+    <h5>Conciertos este mes</h5>
+    <p> <%= group.concerts_this_month %> </p>
+  </div>
+  <div>
+    <h5>Cantidad de asistentes</h5>
+    <ul>
+      <% group.concerts.each do |concert| %>
+        <li><%= concert.place %>, <%= concert.assistants %> Asistentes</li>
+      <% end %>
+    </ul>
+  </div>
+    <p>
+      <%= link_to "Show this group", group %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New group", new_group_path %>
